@@ -13,7 +13,6 @@ main.innerHTML = `
 
 const content = document.getElementById('content')
 
-
 const noteIcon = document.getElementById('noteIcon')
 const archiveIcon = document.getElementById('archiveIcon')
 const binIcon = document.getElementById('binIcon')
@@ -38,46 +37,38 @@ const shadeBin = () => {
 // note
 noteIcon.addEventListener('click',() => {
     shadeNote()
-    content.innerHTML = ` 
-        <create-note-box></create-note-box>
-        <note-list title="Sample Title" text="This is example of note text"></note-list>
-        <note-list title="Sample Title" text="This is example of note text"></note-list>
-        <note-list title="Sample Title" text="This is example of note text"></note-list>
-        <note-list title="Sample Title" text="This is example of note text"></note-list>
-        <note-list title="Sample Title" text="This is example of note text"></note-list>
-        <note-list title="Sample Title" text="This is example of note text"></note-list>
-        <note-list title="Sample Title" text="This is example of note text"></note-list>
-        <note-list title="Sample Title" text="This is example of note text"></note-list>
-        <note-list title="Sample Title" text="This is example of note text"></note-list>
-    `
+    content.innerHTML = `<create-note-box></create-note-box>`
+    const noteArr = JSON.parse(localStorage.getItem('note'))
+    noteArr.forEach(el => {
+        content.innerHTML += `<note-list note-token="${el.noteToken}" type='note' title="${el.title}" text="${el.body}"></>`
+    });
     noteMoreOption()
 })
 
 // archive
 archiveIcon.addEventListener('click',() => {
     shadeArchive()
-    content.innerHTML = ` 
-        <note-list title="archive-list" text="this is your archive-list"></note-list>
-        <note-list title="archive-list" text="this is your archive-list"></note-list>
-        <note-list title="archive-list" text="this is your archive-list"></note-list>
-        <note-list title="archive-list" text="this is your archive-list"></note-list>
-        <note-list title="archive-list" text="this is your archive-list"></note-list>
-    `
+    content.innerHTML = ``
     noteMoreOption()
 })
 
 // bin
 binIcon.addEventListener('click',() => {
     shadeBin()
-    content.innerHTML = ` 
-        <note-list title="bin-list" text="this is your bin-list"></note-list>
-        <note-list title="bin-list" text="this is your bin-list"></note-list>
-        <note-list title="bin-list" text="this is your bin-list"></note-list>
-        <note-list title="bin-list" text="this is your bin-list"></note-list>
-        <note-list title="bin-list" text="this is your bin-list"></note-list>
-        <note-list title="bin-list" text="this is your bin-list"></note-list>
-    `
+    content.innerHTML = ``
     noteMoreOption()
 })
 
 document.querySelector('#noteIcon').click()
+
+const emptyArr = []
+
+if(localStorage.getItem('note') == null){
+    localStorage.setItem('note',JSON.stringify(emptyArr))
+}
+if(localStorage.getItem('archive') == null){
+    localStorage.setItem('archive',JSON.stringify(emptyArr))
+}
+if(localStorage.getItem('bin') == null){
+    localStorage.setItem('bin',JSON.stringify(emptyArr))
+}
