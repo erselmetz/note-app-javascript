@@ -55,6 +55,7 @@ export default class NoteList extends HTMLElement{
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li><a class="dropdown-item" id="moveTo${idB1}" href="#">${b1}</a></li>
                             <li><a class="dropdown-item" id="moveTo${idB2}" href="#">${b2}</a></li>
+                            <li><a class="bin-delete-button dropdown-item d-none" href="#">Delete</a></li>
                             <li><a class="dropdown-item" href="#">cancel</a></li>
                         </ul>
                     </div>
@@ -77,35 +78,68 @@ export const noteMoreOption = () => {
 
     const cardTitle = document.querySelectorAll('.cardTitle')
     const cardBody = document.querySelectorAll('.cardBody')
+
     const token = document.querySelectorAll('.noteToken')
 
-    for (let i = 0; i < button1.length; i++) {
+    const binDeleteButton = document.querySelectorAll('.bin-delete-button')
+
+    // note token
+    for (let i = 0; i < token.length; i++) {
         button1[i].addEventListener('click',()=>{
-            console.log(`move to ${idB1}`,token[i].value);
 
             let oldType = JSON.parse(localStorage.getItem(`${type}`))
 
             if(oldType[i].noteToken == token[i].value){
 
+                let move = JSON.parse(localStorage.getItem(`${idB1.toLowerCase()}`))
+                move.push({
+                    title: (oldType[i].title != null)?oldType[i].title:'',
+                    body: oldType[i].body,
+                    noteToken: oldType[i].noteToken
+                })
+
+                localStorage.setItem(`${idB1.toLowerCase()}`,JSON.stringify(move))
+
                 oldType.splice(i, 1)
-
-                console.log(oldType);
-
                 localStorage.setItem(`${type}`,JSON.stringify(oldType))
 
                 document.querySelector(`#${type}Icon`).click()
                 
             }
         })
-        // button2[i].addEventListener('click',()=>{
-        //     console.log(`move to ${idB2}`,token[i].value);
 
-        //     const oldNote = JSON.parse(localStorage.getItem('note'))
+        button2[i].addEventListener('click',()=>{
 
-        //     if(oldNote[i].noteToken == token[i].value){
+            let oldType = JSON.parse(localStorage.getItem(`${type}`))
 
-        //         delete oldNote[i]
-        //     }
-        // })
+            if(oldType[i].noteToken == token[i].value){
+
+                let move = JSON.parse(localStorage.getItem(`${idB2.toLowerCase()}`))
+                move.push({
+                    title: (oldType[i].title != null)?oldType[i].title:'',
+                    body: oldType[i].body,
+                    noteToken: oldType[i].noteToken
+                })
+
+                localStorage.setItem(`${idB2.toLowerCase()}`,JSON.stringify(move))
+
+                oldType.splice(i,1)
+                localStorage.setItem(`${type}`,JSON.stringify(oldType))
+
+                document.querySelector(`#${type}Icon`).click()
+            }
+        })
+    }
+
+    for (let i = 0; i < binDeleteButton.length; i++) {
+        if(type == 'bin'){
+            binDeleteButton[i].classList.remove('d-none')
+        }
+        binDeleteButton[i].addEventListener('click',() => {
+            let olType = JSON.parse(localStorage.getItem(`${type}`))
+            olType.splice(i ,1)
+            localStorage.setItem(`${type}`,JSON.stringify(olType))
+            document.querySelector(`#${type}Icon`).click()
+        })
     }
 }

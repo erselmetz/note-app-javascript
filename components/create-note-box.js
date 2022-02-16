@@ -75,9 +75,6 @@ export default class CreateNoteBox extends HTMLElement{
                 }
                 newNote.push(inputNewNote)
 
-                console.log('Note in parse',newNote);
-                console.log('Note in stringify',JSON.stringify(newNote));
-
                 localStorage.setItem('note',JSON.stringify(newNote))
 
                 // erased the textarea / input after submiting

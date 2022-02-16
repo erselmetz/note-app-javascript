@@ -1,6 +1,9 @@
 import CreateNoteBox from "../components/create-note-box.js";
 import NoteList, { noteMoreOption } from "../components/note-list.js";
 import Sidebar from "../components/sidebar.js";
+import { emptyArr } from "./addEmptyArr.js";
+
+emptyArr()
 
 const main = document.getElementById('main')
 
@@ -47,28 +50,24 @@ noteIcon.addEventListener('click',() => {
 
 // archive
 archiveIcon.addEventListener('click',() => {
+    content.innerHTML = ''
     shadeArchive()
-    content.innerHTML = ``
+    const noteArr = JSON.parse(localStorage.getItem('archive'))
+    noteArr.forEach(el => {
+        content.innerHTML += `<note-list note-token="${el.noteToken}" type='archive' title="${el.title}" text="${el.body}"></>`
+    });
     noteMoreOption()
 })
 
 // bin
 binIcon.addEventListener('click',() => {
+    content.innerHTML = ''
     shadeBin()
-    content.innerHTML = ``
+    const noteArr = JSON.parse(localStorage.getItem('bin'))
+    noteArr.forEach(el => {
+        content.innerHTML += `<note-list note-token="${el.noteToken}" type='bin' title="${el.title}" text="${el.body}"></>`
+    });
     noteMoreOption()
 })
 
 document.querySelector('#noteIcon').click()
-
-const emptyArr = []
-
-if(localStorage.getItem('note') == null){
-    localStorage.setItem('note',JSON.stringify(emptyArr))
-}
-if(localStorage.getItem('archive') == null){
-    localStorage.setItem('archive',JSON.stringify(emptyArr))
-}
-if(localStorage.getItem('bin') == null){
-    localStorage.setItem('bin',JSON.stringify(emptyArr))
-}
