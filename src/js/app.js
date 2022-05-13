@@ -1,7 +1,7 @@
-import CreateNoteBox from "../components/create-note-box.js";
-import NoteList, { noteMoreOption } from "../components/note-list.js";
-import Sidebar from "../components/sidebar.js";
-import { emptyArr } from "./addEmptyArr.js";
+import CreateNoteBox from "/components/create-note-box";
+import NoteList, { noteMoreOption } from "/components/note-list";
+import Sidebar from "/components/sidebar";
+import { emptyArr } from "/components/add/empty/array";
 
 emptyArr()
 

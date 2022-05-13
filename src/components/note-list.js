@@ -50,7 +50,7 @@ export default class NoteList extends HTMLElement{
                     <input type="hidden" class="noteToken" value="${noteToken}"/>
                     <div class="dropdown">
                         <h4 class="card-title p-2 hover-pale-red rounded" data-bs-toggle="dropdown" >
-                            <img src="./icon/three-dots-vertical.svg" />
+                            <img src="/icon/three-dots-vertical" />
                         </h4>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li><a class="dropdown-item" id="moveTo${idB1}" href="#">${b1}</a></li>
