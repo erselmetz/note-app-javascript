@@ -10,16 +10,8 @@
     "test": "nodemon index.js",
     "start": "node index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/erselmetz/note-app-javascript.git"
-  },
   "author": "Ersel Metz Magbanua",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/erselmetz/note-app-javascript/issues"
-  },
-  "homepage": "https://github.com/erselmetz/note-app-javascript#readme",
   "dependencies": {
     "express": "^4.18.1",
     "nodemon": "^2.0.16",
