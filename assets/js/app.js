@@ -1,12 +1,12 @@
-import CreateNoteBox from "/components/create-note-box.js";
-import Sidebar from "/components/sidebar.js";
-import NoteList, { noteMoreOption } from "/components/note-list.js";
-import { emptyArr } from "/components/add-empty-array.js";
-import { checkIfEmptyOrNot } from "/components/check-if-empty-or-not.js"
+import CreateNoteBox from "../../components/create-note-box.js";
+import Sidebar from "../../components/sidebar.js";
+import NoteList, { noteMoreOption } from "../../components/note-list.js";
+import { emptyArr } from "../../components/add-empty-array.js";
+import { checkIfEmptyOrNot } from "../../components/check-if-empty-or-not.js"
 
 emptyArr()
 
-fetch('/components/add-empty-array.js')
+fetch('../components/add-empty-array.js')
 .then(response => {
     console.log('emptyArr')
 })
