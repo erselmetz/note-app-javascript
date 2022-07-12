@@ -6,7 +6,7 @@ import { checkIfEmptyOrNot } from "../../components/check-if-empty-or-not.js"
 
 emptyArr()
 
-fetch('../components/add-empty-array.js')
+fetch('./components/add-empty-array.js')
 .then(response => {
     console.log('emptyArr')
 })
