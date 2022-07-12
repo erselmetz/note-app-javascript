@@ -1,9 +1,15 @@
-import CreateNoteBox from "/components/create-note-box";
-import NoteList, { noteMoreOption } from "/components/note-list";
-import Sidebar from "/components/sidebar";
-import { emptyArr } from "/components/add/empty/array";
+import CreateNoteBox from "/components/create-note-box.js";
+import Sidebar from "/components/sidebar.js";
+import NoteList, { noteMoreOption } from "/components/note-list.js";
+import { emptyArr } from "/components/add-empty-array.js";
+import { checkIfEmptyOrNot } from "/components/check-if-empty-or-not.js"
 
 emptyArr()
+
+fetch('/components/add-empty-array.js')
+.then(response => {
+    console.log('emptyArr')
+})
 
 const main = document.getElementById('main')
 
@@ -45,6 +51,7 @@ noteIcon.addEventListener('click',() => {
     noteArr.forEach(el => {
         content.innerHTML += `<note-list note-token="${el.noteToken}" type='note' title="${el.title}" text="${el.body}"></>`
     });
+    content.innerHTML += checkIfEmptyOrNot(noteArr,"Note")
     noteMoreOption()
 })
 
@@ -56,6 +63,7 @@ archiveIcon.addEventListener('click',() => {
     noteArr.forEach(el => {
         content.innerHTML += `<note-list note-token="${el.noteToken}" type='archive' title="${el.title}" text="${el.body}"></>`
     });
+    content.innerHTML += checkIfEmptyOrNot(noteArr,"Archive")
     noteMoreOption()
 })
 
@@ -67,6 +75,7 @@ binIcon.addEventListener('click',() => {
     noteArr.forEach(el => {
         content.innerHTML += `<note-list note-token="${el.noteToken}" type='bin' title="${el.title}" text="${el.body}"></>`
     });
+    content.innerHTML += checkIfEmptyOrNot(noteArr,"Bin")
     noteMoreOption()
 })
 

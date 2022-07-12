@@ -1,4 +1,4 @@
-@import url('/css/bootstrap');
+@import url('bootstrap.min.css');
 
 /* Colors */
 .amber,.hover-amber:hover{color:#000!important;background-color:#ffc107!important}

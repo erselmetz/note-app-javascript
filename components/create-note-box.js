@@ -34,8 +34,8 @@ export default class CreateNoteBox extends HTMLElement{
                     <textarea id="${textareaBodyId}" class="w-100" placeholder="Body..." style="height: 20vh;"></textarea>
                     <hr>
                     <div class="d-flex justify-content-end">
-                        <button id="${cancelTextareaId}" class="btn border hover-border-red hover-text-red me-3">cancel</button>
-                        <button id="${saveTextareaButtonId}" class="btn border hover-border-green hover-text-green">save</button>
+                        <button id="${cancelTextareaId}" class="btn text-dark border hover-border-red hover-text-red me-3">cancel</button>
+                        <button id="${saveTextareaButtonId}" class="btn text-dark border hover-border-green hover-text-green">save</button>
                     </div>
                 </div>
             </div>
